@@ -11,6 +11,5 @@ RUN go build -o app
 FROM gcr.io/distroless/base
 WORKDIR /
 COPY --from=builder /workdir/app /app
-COPY --from=builder /workdir/config /root/.kube/config
 
 ENTRYPOINT ["/app"]
