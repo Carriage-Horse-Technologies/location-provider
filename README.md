@@ -17,6 +17,11 @@ docker compose up -d
 for wscat
 
 ```shell
+wscat -c ws://localhost/ws/<適当なユーザーID>
+```
+
+コピペ用
+```
 wscat -c ws://localhost/ws/example-user-id
 ```
 
