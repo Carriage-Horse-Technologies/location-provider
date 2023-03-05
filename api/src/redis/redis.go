@@ -1,6 +1,7 @@
 package redis
 
 import (
+	"fmt"
 	"log"
 	"math"
 	"os"
@@ -215,4 +216,42 @@ func SMEMBERS(key string) (lists []string, err error) {
 		log.Println(err)
 	}
 	return
+}
+func SetWithKey(key string, value string) (err error) {
+	redisPath := os.Getenv("REDIS_HOST")
+	client, err := New(redisPath)
+	if err != nil {
+		return errors.Wrap(err, "Failed to get redis client")
+	}
+	defer client.Close()
+	_, err = client.Set(key, value, 0).Result()
+	if err != nil {
+		log.Println(err)
+	}
+	return
+}
+
+func Update(key string, value string) (err error) {
+	redisPath := os.Getenv("REDIS_HOST")
+	client, err := New(redisPath)
+	if err != nil {
+		return errors.Wrap(err, "Failed to get redis client")
+	}
+	defer client.Close()
+	//キーの存在可否の修正
+	_, err = client.Get(key).Result()
+	if err == redis.Nil {
+		fmt.Println("key does not exist")
+		return SetWithKey(key, value)
+	} else if err != nil {
+		log.Println(err)
+		return
+	}
+
+	err = client.Del(key).Err()
+	if err != nil {
+		err = errors.WithStack(err)
+		return
+	}
+	return SetWithKey(key, value)
 }

@@ -17,6 +17,11 @@ docker compose up -d
 for wscat
 
 ```shell
+wscat -c ws://localhost/ws/<適当なユーザーID>
+```
+
+コピペ用
+```
 wscat -c ws://localhost/ws/example-user-id
 ```
 
@@ -40,4 +45,17 @@ wscat -c ws://localhost/ws/example-user-id
 		}
 	]
 }
+```
+
+```json
+{
+	"action":"UPDATE_CHARACTER_POS",
+	"user_id":"example-user-id",
+	"pos_x":114.514,
+	"pos_y":114.514
+}
+
+// one liner
+{"action":"UPDATE_CHARACTER_POS","user_id":"example-user-id","pos_x":114.514,"pos_y":114.514}
+
 ```
