@@ -37,9 +37,9 @@ func main() {
 		MaxAge: 24 * time.Hour,
 	}))
 
-	router.GET("/ws/:userId", func(c *gin.Context) {
-		userId := c.Param("userId")
-		serveWs(c.Writer, c.Request, userId)
+	router.GET("/ws/:roomId", func(c *gin.Context) {
+		// roomId := c.Param("roomId")
+		serveWs(c.Writer, c.Request, "last-hack")
 	})
 
 	go h.run()

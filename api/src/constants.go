@@ -7,3 +7,4 @@ var SystemResponse = []byte(`{"action":"SYSTEM_MESSAGE","status":"OK","error": f
 const ID_PATH = "ID_PATH"
 const CONNECTION_PATH = "connection_path"
 const BASE_POS_PATH = "POS/"
+const ROOM_ID = "last-hack"

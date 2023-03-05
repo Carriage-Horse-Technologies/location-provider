@@ -57,11 +57,11 @@ func ProviderJob() {
 				continue
 			}
 			fmt.Println("Current target num:", len(userList))
-			m := message{res, "example-user-id"}
+			m := message{res, ROOM_ID}
 			h.broadcast <- m
 
 			//TODO 消せ
-			m = message{SampleResponse, "example-user-id"}
+			m = message{SampleResponse, ROOM_ID}
 			h.broadcast <- m
 		}
 	}()
