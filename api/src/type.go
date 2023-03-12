@@ -50,10 +50,11 @@ type ErrorObject struct {
 	Code string `json:"code"`
 }
 type Request struct {
-	Action string  `json:"action"`
-	UserId string  `json:"user_id"`
-	PosX   float32 `json:"pos_x"`
-	PosY   float32 `json:"pos_y"`
+	Action  string  `json:"action"`
+	UserId  string  `json:"user_id"`
+	Message string  `json:"message"`
+	PosX    float32 `json:"pos_x"`
+	PosY    float32 `json:"pos_y"`
 }
 
 type User struct {
@@ -66,4 +67,9 @@ type User struct {
 type UserPosReponse struct {
 	Action     string `json:"action"`
 	Characters []User `json:"characters"`
+}
+type ChatResponse struct {
+	Action  string `json:"action"`
+	UserId  string `json:"user_id"`
+	Message string `json:"message"`
 }

@@ -59,3 +59,18 @@ wscat -c ws://localhost/ws/example-user-id
 {"action":"UPDATE_CHARACTER_POS","user_id":"example-user-id","pos_x":114.514,"pos_y":114.514}
 
 ```
+
+
+チャットのスキーマ
+
+```json
+{
+    "action":"ACTION_CHAT_MESSAGE",
+    "user_id":"examper-user-id",
+    "message":"hogehoge"
+}
+```
+
+```json
+{"action":"ACTION_CHAT_MESSAGE","user_id":"examper-user-id","message":"hogehoge"}
+```
