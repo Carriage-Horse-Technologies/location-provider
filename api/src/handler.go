@@ -51,7 +51,11 @@ func handler(s []byte) []byte {
 		return r
 	case requestObject.Action == ACTION_CHAT_MESSAGE:
 		// TODO: そのままオウム返し
-		res, err := json.Marshal(requestObject)
+		res, err := json.Marshal(ChatResponse{
+			UserId: requestObject.UserId,
+			Action: requestObject.Action,
+			Message: requestObject.Message,
+		})
 		if err != nil {
 			return ErrorSocketResponse
 		}

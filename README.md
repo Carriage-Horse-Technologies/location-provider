@@ -70,3 +70,7 @@ wscat -c ws://localhost/ws/example-user-id
     "message":"hogehoge"
 }
 ```
+
+```json
+{"action":"ACTION_CHAT_MESSAGE","user_id":"examper-user-id","message":"hogehoge"}
+```
