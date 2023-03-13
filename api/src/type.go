@@ -27,6 +27,7 @@ type connection struct {
 type subscription struct {
 	conn *connection
 	room string
+	user string
 }
 type ByteBroadCast struct {
 	Message []byte

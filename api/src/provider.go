@@ -14,10 +14,10 @@ func ProviderJob() {
 
 	// WebSocketに良い感じに流すジョブ
 	go func() {
-		for range time.Tick(10 * time.Second) {
+		for range time.Tick(5 * time.Second) {
 			fmt.Println("Socket Job is called")
 
-			userList, err := redis.SMEMBERS(CONNECTION_PATH)
+			userList, err := redis.SMEMBERS(CONNECTION_USER_LIST)
 			if err != nil {
 				log.Println(err)
 				continue
@@ -61,8 +61,8 @@ func ProviderJob() {
 			h.broadcast <- m
 
 			//TODO 消せ
-			m = message{SampleResponse, ROOM_ID}
-			h.broadcast <- m
+			// m = message{SampleResponse, ROOM_ID}
+			// h.broadcast <- m
 		}
 	}()
 
