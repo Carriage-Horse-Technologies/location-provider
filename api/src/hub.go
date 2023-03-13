@@ -14,6 +14,7 @@ func (h *hub) run() {
 		select {
 		case s := <-h.register:
 			_, _ = redis.SADD(CONNECTION_PATH, s.room)
+			_, _ = redis.SADD(CONNECTION_USER_LIST, s.user)
 			connections := h.rooms[s.room]
 			if connections == nil {
 				connections = make(map[*connection]bool)
@@ -22,6 +23,8 @@ func (h *hub) run() {
 			h.rooms[s.room][s.conn] = true
 		case s := <-h.unregister:
 			_ = redis.SREM(CONNECTION_PATH, s.room)
+			_ = redis.SREM(CONNECTION_USER_LIST, s.user)
+
 			connections := h.rooms[s.room]
 			if connections != nil {
 				if _, ok := connections[s.conn]; ok {

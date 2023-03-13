@@ -30,6 +30,9 @@ func setUserPos(request Request) (err error) {
 	if err != nil {
 		return err
 	}
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -52,8 +55,8 @@ func handler(s []byte) []byte {
 	case requestObject.Action == ACTION_CHAT_MESSAGE:
 		// TODO: そのままオウム返し
 		res, err := json.Marshal(ChatResponse{
-			UserId: requestObject.UserId,
-			Action: requestObject.Action,
+			UserId:  requestObject.UserId,
+			Action:  requestObject.Action,
 			Message: requestObject.Message,
 		})
 		if err != nil {

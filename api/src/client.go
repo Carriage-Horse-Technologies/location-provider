@@ -80,14 +80,14 @@ func (s *subscription) writePump() {
 	}
 }
 
-func serveWs(w http.ResponseWriter, r *http.Request, roomId string) {
+func serveWs(w http.ResponseWriter, r *http.Request, userId string) {
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err.Error())
 		return
 	}
 	c := &connection{send: make(chan []byte, 256), ws: ws}
-	s := subscription{c, roomId}
+	s := subscription{c, ROOM_ID, userId}
 	h.register <- s
 	go s.writePump()
 	go s.readPump()
