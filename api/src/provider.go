@@ -14,7 +14,7 @@ func ProviderJob() {
 
 	// WebSocketに良い感じに流すジョブ
 	go func() {
-		for range time.Tick(5 * time.Second) {
+		for range time.Tick(1 * time.Second) {
 			fmt.Println("Socket Job is called")
 
 			userList, err := redis.SMEMBERS(CONNECTION_USER_LIST)
